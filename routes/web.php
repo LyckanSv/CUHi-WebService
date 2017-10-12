@@ -1,9 +1,17 @@
 <?php
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
-Route::get('/login', function () {
+Route::get('/logint', function () {
     return view('login');
 });
+
+Route::get('/regis', function () {
+    return view('registers');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
