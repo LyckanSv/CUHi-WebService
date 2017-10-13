@@ -33,7 +33,7 @@ class HistoryController extends Controller
 
         array_push($pila, $contenedor);
       }
-      return json_encode($pila,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+      return json_encode(["histories"=>$pila],JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
     }
 
