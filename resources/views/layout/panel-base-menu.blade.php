@@ -12,7 +12,7 @@
           </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="#"><i class="fa fa-plus"></i>Agregar historia</a></li>
+        <li><a href="{{url('historyadd')}}"><i class="fa fa-plus"></i>Agregar historia</a></li>
         <li><a href="#"><i class="fa fa-refresh"></i>Actualizar historia</a></li>
       </ul>
     </li>

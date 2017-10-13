@@ -16,7 +16,11 @@ Route::get('/homes', function () {
     return view('index');
 })->middleware('auth');
 
+Route::get('/historyadd', function () {
+    return view('history-add');
+})->middleware('auth');
 
+Route::post('/historyaddpost', 'HistoryController@addNewHistory');
 
 Auth::routes();
 
