@@ -1,7 +1,7 @@
   <ul class="sidebar-menu" data-widget="tree">
     <li class="header">Opciones</li>
     <!-- Optionally, you can add icons to the links -->
-    <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+    <li class="active"><a href="{{url('homes')}}"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
 
 
     <!-- Histories -->
@@ -25,7 +25,7 @@
           </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="#"><i class="fa fa-plus"></i>Agregar capitulo</a></li>
+        <li><a href="{{url('chapteradd')}}"><i class="fa fa-plus"></i>Agregar capitulo</a></li>
         <li><a href="#"><i class="fa fa-refresh"></i>Actualizar capitulo</a></li>
       </ul>
     </li>

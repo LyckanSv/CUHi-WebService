@@ -1,8 +1,8 @@
 @extends('layout/panel-base')
 
 @section('page-header')
-  Inicio
-  <small>Bienvenido</small>
+  Nuevas historias
+  <small>Por ser contadas</small>
 @endsection
 
 @section('main-content')
@@ -125,7 +125,7 @@
             </div>
             <div class="modal-body">
               <p>
-                Todos los campose seran enviados y publicados en CUHi. Desea guardar los cambios?
+                Todos los campos seran enviados y publicados en CUHi. Desea guardar los cambios?
               </p>
             </div>
             <div class="modal-footer">

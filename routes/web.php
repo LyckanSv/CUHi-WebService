@@ -1,4 +1,5 @@
 <?php
+use App\History;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,11 +14,16 @@ Route::get('/regis', function () {
 });
 
 Route::get('/homes', function () {
-    return view('index');
+  $histories = History::all();
+        return view('index')->with('histories', $histories);
 })->middleware('auth');
 
 Route::get('/historyadd', function () {
     return view('history-add');
+})->middleware('auth');
+
+Route::get('/chapteradd', function () {
+    return view('chapter-add');
 })->middleware('auth');
 
 Route::post('/historyaddpost', 'HistoryController@addNewHistory');

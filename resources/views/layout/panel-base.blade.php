@@ -30,6 +30,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="plugins/iCheck/all.css">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Select2 -->
@@ -252,6 +254,11 @@ desired effect
 <script src="plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Table -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -343,6 +350,16 @@ desired effect
     $(".inputImage").change(function () {
       readURL(this);
     });
+
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
 
   })
 
