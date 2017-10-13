@@ -27,7 +27,7 @@ Route::get('/historyadd', function () {
 
 Route::get('/chapteradd', function () {
   $author_id = Auth::user()->id;
-  $histories = History::where('author_id',$author_id);
+  $histories = History::where('author_id',$author_id)->get();
   return view('chapter-add')->with('histories', $histories);
 })->middleware('auth');
 
