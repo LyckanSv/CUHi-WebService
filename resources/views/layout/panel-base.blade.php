@@ -10,11 +10,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>AdminLTE 2 | Starter</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,22 +23,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
   <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
   <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
   <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="{{asset('plugins/timepicker/bootstrap-timepicker.min.css')}}">
   <!-- Select2 -->
-  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="{{asset('bower_components/select2/dist/css/select2.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
+  <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/css/skins/skin-green.min.css')}}">
 
   <!-- Google Font -->
   <link rel="stylesheet"
