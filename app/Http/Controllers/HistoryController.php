@@ -12,11 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
       $histories = History::all();
@@ -35,10 +31,9 @@ class HistoryController extends Controller
           "rating"=> $h->rating
         );
 
-
         array_push($pila, $contenedor);
       }
-      return $pila;
+      return json_encode($pila,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
     }
 
