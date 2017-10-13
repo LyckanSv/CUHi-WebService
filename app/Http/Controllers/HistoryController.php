@@ -19,6 +19,26 @@ class HistoryController extends Controller
      */
     public function index()
     {
+      $histories = History::all();
+      $pila = array();
+      foreach ( $histories as $h) {
+        $contenedor = array(
+          "id_history"=> (string)($h->id),
+          "autor_name"=> $h->author_name,
+          "autor_id"=> $h->author_id,
+          "title"=> $h->title,
+          "category"=> $h->category,
+          "image"=> $h->url_image,
+          "chapters"=> $h->chapters,
+          "description"=> $h->description,
+          "date"=> (string)($h->date),
+          "rating"=> $h->rating
+        );
+
+
+        array_push($pila, $contenedor);
+      }
+      return $pila;
 
     }
 
@@ -109,8 +129,7 @@ class HistoryController extends Controller
       $history->date = date($request->date);
       $history->rating = 0;
       $history->save();
-
-      return $history;
+      return view('history-add-result')->with('history', $history);
 
     }
 }

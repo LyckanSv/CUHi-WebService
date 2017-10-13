@@ -1,7 +1,7 @@
 @extends('layout/panel-base')
 
 @section('page-header')
-  Nuevas capirulo
+  Nuevas capitulo
   <small>Continua donde de quedaste</small>
 @endsection
 
@@ -15,7 +15,7 @@
 
 
 
-    <form role="form" method="POST" action="{{url('chapteraddpost')}}" enctype="multipart/form-data" >
+    <form role="form" method="POST" action="{{url('chapterselectorpost')}}" enctype="multipart/form-data" >
         {{csrf_field()}}
       <div class="box-body">
         @if(count($errors))
@@ -53,28 +53,14 @@
           </select>
         </div>
 
-        <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
-          <label for="content">Contenido del Capitulo</label>
-          <textarea rows="10" class="form-control" id="content" name="body" ></textarea>
-
-        </div>
-
-
-        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-          <label for="exampleInputFile">Imagen del Capitulo </label>
-          <input type='file' id="image" name="image" class="inputImage" />
-          <br>
-          <img id="" class="image_upload_preview " src="img/placeholder-image.png" alt="your image" width="200px" />
-
-          <p class="help-block">Seleccione la imagen en formato jpg/png/svg</p>
-        </div>
 
 
       </div>
       <!-- /.box-body -->
 
       <div class="box-footer">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-info">Enviar</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">Seleccionar</button>
+
       </div>
 
 

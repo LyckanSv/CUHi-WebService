@@ -13,7 +13,7 @@
       </a>
       <ul class="treeview-menu">
         <li><a href="{{url('historyadd')}}"><i class="fa fa-plus"></i>Agregar historia</a></li>
-        <li><a href="#"><i class="fa fa-refresh"></i>Actualizar historia</a></li>
+        <li><a href=""><i class="fa fa-refresh"></i>Opciones historia</a></li>
       </ul>
     </li>
 
@@ -26,7 +26,7 @@
       </a>
       <ul class="treeview-menu">
         <li><a href="{{url('chapteradd')}}"><i class="fa fa-plus"></i>Agregar capitulo</a></li>
-        <li><a href="#"><i class="fa fa-refresh"></i>Actualizar capitulo</a></li>
+        <li><a href="{{url('chapterselector')}}"><i class="fa fa-refresh"></i>Opciones capitulo</a></li>
       </ul>
     </li>
   </ul>
