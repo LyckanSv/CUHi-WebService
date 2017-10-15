@@ -3,25 +3,25 @@ use Illuminate\Support\Facades\Auth;
 use App\History;
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Route::get('/logint', function () {
-    return view('login');
+  return view('login');
 });
 
 Route::get('/regis', function () {
-    return view('registers');
+  return view('registers');
 });
 
 Route::get('/homes', function () {
   $histories = History::all();
-        return view('index')->with('histories', $histories);
+  return view('index')->with('histories', $histories);
 })->middleware('auth');
 
 
 Route::get('/historyadd', function () {
-    return view('history-add');
+  return view('history-add');
 })->middleware('auth');
 
 
