@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\History;
-
+use App\Category;
 
 // Index. login, register
 Route::get('/', function () {
@@ -19,7 +19,8 @@ Route::get('/homes', function () {
 //Histories
 
 Route::get('/historyadd', function () {
-  return view('histories/history-add');
+  $categories = Category::all();
+  return view('histories/history-add')->with('categories', $categories);
 })->middleware('auth');
 
 Route::resource('histories','HistoryController');
@@ -31,7 +32,19 @@ Route::get('/historyoption',function (){
   return view('histories/history-option')->with('histories', $histories);
 })->middleware('auth');
 
+//Categories
 
+Route::get('/categoryadd', function () {
+  return view('categories/category-add');
+})->middleware('auth');
+
+Route::resource('categories','CategoryController');
+
+
+Route::get('/categoryoption',function (){
+  $categories = Category::all();
+  return view('categories/category-option')->with('categories', $categories);
+})->middleware('auth');
 
 //Chapter
 
@@ -42,7 +55,8 @@ Route::get('/chapteradd', function () {
 })->middleware('auth');
 
 Route::get('/chapterselector', function () {
-  $histories = History::find(Auth::user()->id)->get();
+  $author_id = Auth::user()->id;
+  $histories = History::where('author_id',$author_id)->get();
   return view('chapter-update-selector')->with('histories', $histories);
 })->middleware('auth');
 

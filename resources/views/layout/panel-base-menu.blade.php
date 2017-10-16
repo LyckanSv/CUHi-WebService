@@ -17,6 +17,18 @@
       </ul>
     </li>
 
+    <li class="treeview">
+      <a href="#"><i class="fa fa-bookmark"></i> <span>Categorias</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="{{url('categoryadd')}}"><i class="fa fa-plus"></i>Agregar categoria</a></li>
+        <li><a href="{{url('categoryoption')}}"><i class="fa fa-refresh"></i>Opciones Categoria</a></li>
+      </ul>
+    </li>
+
     <!-- Chapters -->
     <li class="treeview">
       <a href="#"><i class="fa fa-bookmark"></i> <span>Capitulos</span>

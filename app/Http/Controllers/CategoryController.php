@@ -35,7 +35,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'category' => 'required',
+      ]);
+      $category = new Category;
+
+      $category->category = $request->category;
+      $category->save();
+
+      return view('categories/category-add-result')->with('category', $category);
     }
 
     /**
@@ -57,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories/category-update')->with('category', $category);
     }
 
     /**
@@ -67,9 +75,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+      $category = Category::find($id);
+      $category->category = $request->category;
+      $category->save();
+      return redirect('homes');
     }
 
     /**
@@ -78,8 +89,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+      $category = Category::find($id);
+      $category->delete();
+      return redirect('homes');
     }
 }

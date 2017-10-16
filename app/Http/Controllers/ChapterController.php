@@ -96,10 +96,10 @@ class ChapterController extends Controller
     Storage::delete($chapter->image_path);
     $chapter->delete();
     $history->save();
-    return "ok delete";
+    return redirect('homes');
   }
 
   public function update(Request $request){
-    return "ok update";
+    return redirect('homes');
   }
 }

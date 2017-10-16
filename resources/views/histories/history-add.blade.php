@@ -15,7 +15,7 @@
 
 
 
-    <form role="form" method="POST" action="{{url('historyaddpost')}}" enctype="multipart/form-data" >
+    <form role="form" method="POST" action="{{action('HistoryController@store')}}" enctype="multipart/form-data" >
         {{csrf_field()}}
       <div class="box-body">
         @if(count($errors))
@@ -74,16 +74,16 @@
             <option>Deportes</option>
             <option>Viajes / Cultura</option>
             <option>Otros temas / Varios</option>
+            @foreach($categories as $category)
+            <option>{{$category->category}}</option>
+            @endforeach
           </select>
         </div>
 
         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
           <label for="description">Descripcion</label>
           <textarea rows="10" class="form-control" id="description" name="description" ></textarea>
-
         </div>
-
-
 
         <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
           <label>Date:</label>
