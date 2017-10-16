@@ -1,23 +1,81 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+@extends('layout/panel-base')
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@section('page-header')
+  Inicio
+  <small>Bienvenido</small>
+@endsection
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+@section('main-content')
+
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Historias en CUHi</h3>
     </div>
-</div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>Autor</th>
+          <th>Titulo</th>
+          <th>Genero</th>
+          <th>Capitulos</th>
+          <th>Puntaje</th>
+          <th>Fecha</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+          @foreach ($histories as $history)
+            <tr>
+              <td>{{$history->id}}</td>
+              <td>{{$history->author_name}}</td>
+              <td>{{$history->title}}</td>
+              <td>{{$history->category}}</td>
+              <td>{{$history->chapters}}</td>
+              <td>{{$history->rating}}</td>
+              <td>{{$history->date}}</td>
+            </tr>
+        @endforeach
+        </tbody>
+
+
+        <tfoot>
+        <tr>
+          <th>id</th>
+          <th>Autor</th>
+          <th>Titulo</th>
+          <th>Genero</th>
+          <th>Capitulos</th>
+          <th>Puntaje</th>
+          <th>Fecha</th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.box-body -->
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection

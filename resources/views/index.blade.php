@@ -1,81 +1,89 @@
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@extends('layout/panel-base')
+        <title>Laravel</title>
 
-@section('page-header')
-  Inicio
-  <small>Bienvenido</small>
-@endsection
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-@section('main-content')
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #2ECC71;
+                color: #f9f9f9;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 100;
+                height: 100vh;
+                margin: 0;
+            }
 
-  <div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Historias en CUHi</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <table id="example1" class="table table-bordered table-striped">
-        <thead>
-        <tr>
-          <th>id</th>
-          <th>Autor</th>
-          <th>Titulo</th>
-          <th>Genero</th>
-          <th>Capitulos</th>
-          <th>Puntaje</th>
-          <th>Fecha</th>
-        </tr>
-        </thead>
+            .full-height {
+                height: 100vh;
+            }
 
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
 
-        <tbody>
-          @foreach ($histories as $history)
-            <tr>
-              <td>{{$history->id}}</td>
-              <td>{{$history->author_name}}</td>
-              <td>{{$history->title}}</td>
-              <td>{{$history->category}}</td>
-              <td>{{$history->chapters}}</td>
-              <td>{{$history->rating}}</td>
-              <td>{{$history->date}}</td>
-            </tr>
-        @endforeach
-        </tbody>
+            .position-ref {
+                position: relative;
+            }
 
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
 
-        <tfoot>
-        <tr>
-          <th>id</th>
-          <th>Autor</th>
-          <th>Titulo</th>
-          <th>Genero</th>
-          <th>Capitulos</th>
-          <th>Puntaje</th>
-          <th>Fecha</th>
-        </tr>
-        </tfoot>
-      </table>
-    </div>
-    <!-- /.box-body -->
-  </div>
+            .content {
+                text-align: center;
+            }
 
+            .title {
+                font-size: 84px;
+            }
 
+            .links > a {
+                color: #f9f9f9;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
 
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div class="content">
 
 
 
-@endsection
+
+            </div>
+        </div>
+    </body>
+</html>

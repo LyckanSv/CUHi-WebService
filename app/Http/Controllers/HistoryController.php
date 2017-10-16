@@ -53,9 +53,29 @@ class HistoryController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
-  public function store(Request $request)
+  public function store(HistoryFormRequest $request)
   {
+    $this->validate($request, [
+      'image' => 'required|image',
+    ]);
 
+    $path = Storage::putFile('public/imagehistory', $request->file('image'));
+    $url = Storage::url($path);
+
+    $history = new History;
+
+    $history->author_name = Auth::user()->name;
+    $history->author_id = Auth::user()->id;
+    $history->title = $request->title;
+    $history->category = $request->category;
+    $history->url_image = $url;
+    $history->image_path = $path;
+    $history->chapters = "0";
+    $history->description = $request->description;
+    $history->date = date($request->date);
+    $history->rating = 0;
+    $history->save();
+    return view('histories/history-add-result')->with('history', $history);
   }
 
   /**
@@ -77,7 +97,7 @@ class HistoryController extends Controller
   */
   public function edit(History $history)
   {
-    //
+    return view('histories/history-update')->with('history', $history);
   }
 
   /**
@@ -87,9 +107,15 @@ class HistoryController extends Controller
   * @param  \App\History  $history
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, History $history)
+  public function update(Request $request, $id)
   {
-    //
+    $history = History::find($id);
+    $history->title = $request->title;
+    $history->category = $request->category;
+    $history->description = $request->description;
+    $history->date = date($request->date);
+    $history->save();
+    return redirect('homes');
   }
 
   /**
@@ -98,33 +124,15 @@ class HistoryController extends Controller
   * @param  \App\History  $history
   * @return \Illuminate\Http\Response
   */
-  public function destroy(History $history)
+  public function destroy( $id)
   {
-    //
+    $history = History::find($id);
+    $history->delete();
+    return redirect('homes');
   }
 
   public function addNewHistory(HistoryFormRequest $request){
-    $this->validate($request, [
-      'image' => 'required|image',
-    ]);
 
-    $path = Storage::putFile('public/imagehistory', $request->file('image'));
-    $url = Storage::url($path);
-
-    $history = new History;
-
-    $history->author_name = Auth::user()->name;
-    $history->author_id = Auth::user()->id;
-    $history->title = $request->title;
-    $history->category = $request->category;
-    $history->url_image = $url;
-    $history->image_path = $path;
-    $history->chapters = "0";
-    $history->description = $request->description;
-    $history->date = date($request->date);
-    $history->rating = 0;
-    $history->save();
-    return view('history-add-result')->with('history', $history);
 
   }
 }

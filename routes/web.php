@@ -2,28 +2,38 @@
 use Illuminate\Support\Facades\Auth;
 use App\History;
 
+
+// Index. login, register
 Route::get('/', function () {
-  return view('welcome');
+  return view('index');
 });
 
-Route::get('/logint', function () {
-  return view('login');
-});
 
-Route::get('/regis', function () {
-  return view('registers');
-});
-
+//Main
 Route::get('/homes', function () {
   $histories = History::all();
-  return view('index')->with('histories', $histories);
+  return view('home')->with('histories', $histories);
 })->middleware('auth');
 
+
+//Histories
 
 Route::get('/historyadd', function () {
-  return view('history-add');
+  return view('histories/history-add');
 })->middleware('auth');
 
+Route::resource('histories','HistoryController');
+
+
+Route::get('/historyoption',function (){
+  $author_id = Auth::user()->id;
+  $histories = History::where('author_id',$author_id)->get();
+  return view('histories/history-option')->with('histories', $histories);
+})->middleware('auth');
+
+
+
+//Chapter
 
 Route::get('/chapteradd', function () {
   $author_id = Auth::user()->id;
@@ -36,7 +46,7 @@ Route::get('/chapterselector', function () {
   return view('chapter-update-selector')->with('histories', $histories);
 })->middleware('auth');
 
-Route::post('/historyaddpost', 'HistoryController@addNewHistory');
+
 Route::post('/chapteraddpost', 'ChapterController@addNewChapter')->middleware('auth');
 Route::post('/chapterselectorpost', 'ChapterController@create')->middleware('auth');
 Route::post('/chapterdeletepost', 'ChapterController@delete')->middleware('auth');

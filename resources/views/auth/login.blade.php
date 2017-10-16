@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="../../index2.html"><b>CUH</b>i</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -39,7 +39,7 @@
     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
       {{ csrf_field() }}
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-        <input id="email" type="email" type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
+        <input id="email" type="email" type="email" class="form-control" placeholder="Correo" name="email" value="{{ old('email') }}" required autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
             <span class="help-block">
@@ -50,7 +50,7 @@
 
 
       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
-        <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
+        <input id="password" type="password" class="form-control" name="password" required placeholder="Contrasenia">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
             <span class="help-block">
@@ -77,16 +77,14 @@
     </form>
 
     <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
+      <p>- O -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Inicia sesion con Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Inicia sesion con Google+</a>
     </div>
     <!-- /.social-auth-links -->
 
-    <a href="#">I forgot my password</a><br>
-    <a href="{{url('regis')}}" class="text-center">Register a new membership</a>
+    <a href="{{ route('password.request') }}">He olvidado mi contrasenia</a><br>
+    <a href="{{ route('register') }}" class="text-center">Registrar un nueva usuario</a>
 
 
 
