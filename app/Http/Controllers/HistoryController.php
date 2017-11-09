@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\History;
+use App\Chapter;
 use Illuminate\Http\Request;
 use App\Http\Requests\HistoryFormRequest;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +38,30 @@ class HistoryController extends Controller
 
   }
 
+  public function search($id)
+  {
+    $histories = History::where('title', 'LIKE', '%'.$id.'%')->get();
+    $pila = array();
+    foreach ( $histories as $h) {
+      $contenedor = array(
+        "id_history"=> (string)($h->id),
+        "autor_name"=> $h->author_name,
+        "autor_id"=> $h->author_id,
+        "title"=> $h->title,
+        "category"=> $h->category,
+        "image"=> $h->url_image,
+        "chapters"=> $h->chapters,
+        "description"=> $h->description,
+        "date"=> (string)($h->date),
+        "rating"=> $h->rating
+      );
+
+      array_push($pila, $contenedor);
+    }
+    return json_encode(["histories"=>$pila],JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+
+  }
+
   /**
   * Show the form for creating a new resource.
   *
@@ -44,7 +69,7 @@ class HistoryController extends Controller
   */
   public function create()
   {
-    //
+    
   }
 
   /**
@@ -84,9 +109,20 @@ class HistoryController extends Controller
   * @param  \App\History  $history
   * @return \Illuminate\Http\Response
   */
-  public function show(History $history)
+  public function show($id)
   {
-    //
+    $h = History::find($id);
+      $contenedor = array(
+        "id_history"=> (string)($h->id),
+        "user"=> $h->author_name,
+        "aproved"=> true,
+        "title"=> $h->title,
+        "category"=> $h->category,
+        'chapters' => Chapter::where('history_id', $id)->get(),
+        "rating"=> $h->rating
+      );
+
+    return json_encode($contenedor,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
   }
 
   /**
